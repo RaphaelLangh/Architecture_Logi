@@ -9,7 +9,9 @@ public class FileLinkedList<T> extends ServiceFile<T> {
 	public FileLinkedList(LinkedList<T> t){
 		this.liste = t ;
 	}
-	
+	public FileLinkedList(){
+		this(new LinkedList<T>());
+	}
 	public LinkedList<T> getListe() {
 		return liste;
 	}

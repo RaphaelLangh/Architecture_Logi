@@ -7,7 +7,7 @@ public abstract class ServiceFile<T> implements File<T> {
 			return "" ;
 		}
 		else {
-			return "" + this.pull().toString() ;
+			return "" + this.pull().toString() + ", " + this.toString();
 		}
 	}
 	
@@ -17,7 +17,7 @@ public abstract class ServiceFile<T> implements File<T> {
 		}
 		else {
 			this.pull();
-			return 1 + (this.size());
+			return 1+this.size();
 		}
 	}
 	
@@ -25,7 +25,7 @@ public abstract class ServiceFile<T> implements File<T> {
 		if(this.estvide()){
 			return false ;
 		}
-		else return (this.pull().equals(e))|(this.contient(e));
+		else return (this.pull().equals(e))||(this.contient(e));
 	}
 
 }
