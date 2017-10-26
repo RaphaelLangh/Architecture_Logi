@@ -1,31 +1,33 @@
 package tp1;
 
+import java.util.Iterator;
+
 public abstract class ServiceFile<T> implements File<T> {
 	
 	public String toString(){
-		if(this.estvide()){
-			return "" ;
+		String s = "[" ;
+		Iterator<T> it = this.iteration();
+		while(it.hasNext()){
+			s = s + it.next() + ", " ;
 		}
-		else {
-			return "" + this.pull().toString() + ", " + this.toString();
-		}
+		return s + "]" ;
 	}
 	
 	public int size(){
-		if(this.estvide()){
-			return 0 ;
-		}
-		else {
-			this.pull();
-			return 1+this.size();
-		}
+	int r = 0 ;
+	Iterator<T> it = this.iteration() ;
+	while(it.hasNext()){
+			r=r+1;
+			it.next();
+			}
+	return r;
 	}
 	
 	public boolean contient(T e){
-		if(this.estvide()){
-			return false ;
+		Iterator<T> it = this.iteration();
+		while(it.hasNext()&&!it.next().equals(e)){
 		}
-		else return (this.pull().equals(e))||(this.contient(e));
+		return it.hasNext() ;
 	}
 
 }

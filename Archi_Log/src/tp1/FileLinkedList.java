@@ -1,5 +1,6 @@
 package tp1;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class FileLinkedList<T> extends ServiceFile<T> {
@@ -26,6 +27,11 @@ public class FileLinkedList<T> extends ServiceFile<T> {
 
 	public T pull() {
 		return this.getListe().pop();
+	}
+	
+	public Iterator<T> iteration(){
+		return this.getListe().iterator();
+		
 	}
 
 }
