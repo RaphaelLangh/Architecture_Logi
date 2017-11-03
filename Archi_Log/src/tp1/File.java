@@ -10,6 +10,8 @@ public interface File<T> {
 	
 	T pull() ; // renvoit le 1er élément rentré dans le file et le supprime 
 	
-	Iterator<T> iteration() ;
+	Iterator<T> iteration() ; //renvoit un itérateur sur la file
+	
+	T head() ; // renvoit le 1er élément de la file (le premier entré) 
 
 }

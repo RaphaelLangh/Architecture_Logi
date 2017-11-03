@@ -3,7 +3,7 @@ package tp1;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class FileLinkedList<T> extends ServiceFile<T> {
+public class FileLinkedList<T> extends ServiceFileSurObjet<T> implements ServiceFile<T>{
 	
 	private LinkedList<T> liste ;
 	
@@ -32,6 +32,10 @@ public class FileLinkedList<T> extends ServiceFile<T> {
 	public Iterator<T> iteration(){
 		return this.getListe().iterator();
 		
+	}
+	
+	public T head() {
+		return this.getListe().getFirst();
 	}
 
 }
