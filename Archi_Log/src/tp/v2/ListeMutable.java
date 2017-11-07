@@ -1,4 +1,4 @@
-	package tp.v2;
+package tp.v2;
 
 public interface ListeMutable<E> extends Liste<E>{
 
@@ -27,13 +27,13 @@ public interface ListeMutable<E> extends Liste<E>{
 
 	public static <E> ListeMutable<E> cons(E t, ListeMutable<E> r){
 		return new ListeMutable<E>() {
-			// TODO DÃ©finir les mÃ©thodes utiles.			
+			// TODO Définir les méthodes utiles.			
 		};
 	}
 	
 	public static <E> ListeMutable<E> vide() {
 		return new ListeMutable<E>() {
-			// TODO DÃ©finir les mÃ©thodes utiles.						
+			// TODO Définir les méthodes utiles.						
 		};
 	}
 	

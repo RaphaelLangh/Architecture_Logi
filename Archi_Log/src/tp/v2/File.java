@@ -1,3 +1,4 @@
+
 package tp.v2;
 
 public interface File<E> extends Iterable<E> {

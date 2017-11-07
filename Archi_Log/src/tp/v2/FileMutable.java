@@ -33,14 +33,14 @@ public interface FileMutable<E> extends File<E> {
 		// TODO
 		return this;
 	}
-	// ComplexitÃ© O(|secondeFile|)
+	// Complexité O(|secondeFile|)
 	@Override
 	default FileMutable<E> ajout(File<E> secondeFile) {
-		// TODO (mÃªme code que FileImmutable.ajout)
+		// TODO (même code que FileImmutable.ajout)
 		return null;
 	}
 	
-	// ComplexitÃ© en O(1).
+	// Complexité en O(1).
 	void ajouter(File<E> secondeFile);
 
 }

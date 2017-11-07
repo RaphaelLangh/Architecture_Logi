@@ -26,7 +26,7 @@ public interface FileImmutable<E> extends File<E> {
 		// TODO
 		return null;
 	}
-	// ComplexitÃ© O(|secondeFile|)
+	// Complexité O(|secondeFile|)
 	@Override
 	default FileImmutable<E> ajout(File<E> secondeFile){
 		FileImmutable<E> r = this;

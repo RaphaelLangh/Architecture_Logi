@@ -30,7 +30,7 @@ public interface Liste<E> extends Iterable<E> {
 	 */
 	default Iterator<E> iterator() {
 		// TODO
-		return null; // ComplÃ©ter puis utiliser IterateurListe.
+		return null; // Compléter puis utiliser IterateurListe.
 	}
 	default Liste<E> miroir(){
 		// TODO
@@ -42,13 +42,13 @@ public interface Liste<E> extends Iterable<E> {
 	
 	public static <E> Liste<E> vide() {
 		return new Liste<E>() {
-			// TODO DÃ©finir les mÃ©thodes utiles.			
+			// TODO Définir les méthodes utiles.			
 		};
 	}
 	
 	public static <E> Liste<E> cons(E t, Liste<E> r) {
 		return new Liste<E>() {
-			// TODO DÃ©finir les mÃ©thodes utiles.			
+			// TODO Définir les méthodes utiles.			
 		};
 	}
 	
