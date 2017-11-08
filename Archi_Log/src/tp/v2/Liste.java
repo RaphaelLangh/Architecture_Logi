@@ -50,7 +50,7 @@ public interface Liste<E> extends Iterable<E> {
 		while(it.hasNext()){
 			listeMiroir = cons(listeReste.tete(),listeMiroir);
 			listeReste = listeReste.reste();
-		}
+		} 
 		return listeMiroir;
 	}
 	/*
@@ -79,7 +79,7 @@ public interface Liste<E> extends Iterable<E> {
 			
 			@Override
 			public boolean casCons() {
-				return true; //PAS SUR
+				return true; // à verifier
 			}
 			
 			@Override
