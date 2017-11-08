@@ -28,13 +28,30 @@ public interface Liste<E> extends Iterable<E> {
 	/*
 	 * Services
 	 */
-	default Iterator<E> iterator() {
-		// TODO
-		return null; // Compléter puis utiliser IterateurListe.
+	default Iterator<E> iterator() {      //Ã  verifier
+		Iterator<E> itere = new Iterator<E>(){
+		Liste<E> sauv = cons(tete(),cons(tete(),reste()));   //duplication de la tete , pour que le premier next() donne tete().
+		public boolean hasNext(){
+			return sauv.reste().estVide();
+			}
+		public E next(){
+			sauv = sauv.reste();   //prend Ã  chaque fois la tete du reste
+			return sauv.tete();
+			}
+		};
+		return itere; 
 	}
+	
 	default Liste<E> miroir(){
-		// TODO
-		return null;
+		Iterator<E> it = this.iterator();
+		Liste<E> listeMiroir = new Liste<E>(){};
+		listeMiroir=cons(this.tete(),listeMiroir);
+		Liste<E> listeReste = this.reste();
+		while(it.hasNext()){
+			listeMiroir = cons(listeReste.tete(),listeMiroir);
+			listeReste = listeReste.reste();
+		}
+		return listeMiroir;
 	}
 	/*
 	 * Fabriques (statiques)
@@ -42,13 +59,37 @@ public interface Liste<E> extends Iterable<E> {
 	
 	public static <E> Liste<E> vide() {
 		return new Liste<E>() {
-			// TODO Définir les méthodes utiles.			
+			@Override
+			public boolean casVide(){
+				return true;
+			}
 		};
 	}
 	
 	public static <E> Liste<E> cons(E t, Liste<E> r) {
 		return new Liste<E>() {
-			// TODO Définir les méthodes utiles.			
+			@Override
+			public E tete() {
+				return t;
+				}
+			@Override
+			public Liste<E> reste() {
+				return r;
+				}
+			
+			@Override
+			public boolean casCons() {
+				return true; //PAS SUR
+			}
+			
+			@Override
+			public int taille(){
+				int i = 0;
+				if( r.estVide()){
+					return i;
+				}
+				return 1+r.taille();
+			}
 		};
 	}
 	
