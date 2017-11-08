@@ -84,11 +84,13 @@ public interface Liste<E> extends Iterable<E> {
 			
 			@Override
 			public int taille(){
+				Iterator<E> it = this.iterator();
 				int i = 0;
-				if( r.estVide()){
-					return i;
+				while (it.hasNext()){
+					it.next();
+					i+=1;
 				}
-				return 1+r.taille();
+				return i;
 			}
 		};
 	}
