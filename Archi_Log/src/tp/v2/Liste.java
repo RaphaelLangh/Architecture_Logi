@@ -28,15 +28,17 @@ public interface Liste<E> extends Iterable<E> {
 	/*
 	 * Services
 	 */
-	default Iterator<E> iterator() {      //à verifier
+	default Iterator<E> iterator() {      
+		Liste<E> that = this;
 		Iterator<E> itere = new Iterator<E>(){
-		Liste<E> sauv = cons(tete(),cons(tete(),reste()));   //duplication de la tete , pour que le premier next() donne tete().
+		Liste<E> sauv= that;
 		public boolean hasNext(){
-			return sauv.reste().estVide();
+			return !sauv.casVide();
 			}
 		public E next(){
+			E tete = sauv.tete();
 			sauv = sauv.reste();   //prend à chaque fois la tete du reste
-			return sauv.tete();
+			return tete;
 			}
 		};
 		return itere; 
@@ -44,13 +46,10 @@ public interface Liste<E> extends Iterable<E> {
 	
 	default Liste<E> miroir(){
 		Iterator<E> it = this.iterator();
-		Liste<E> listeMiroir = new Liste<E>(){};
-		listeMiroir=cons(this.tete(),listeMiroir);
-		Liste<E> listeReste = this.reste();
+		Liste<E> listeMiroir = Liste.vide();
 		while(it.hasNext()){
-			listeMiroir = cons(listeReste.tete(),listeMiroir);
-			listeReste = listeReste.reste();
-		} 
+			listeMiroir = cons(it.next(),listeMiroir);
+		}
 		return listeMiroir;
 	}
 	/*
@@ -66,15 +65,18 @@ public interface Liste<E> extends Iterable<E> {
 		};
 	}
 	
-	public static <E> Liste<E> cons(E t, Liste<E> r) {
+	public static <E> Liste<E> cons(E t, final Liste<E> r) {
+		final Liste<E> r1=r==null ? Liste.vide() : r;
+		
 		return new Liste<E>() {
+			
 			@Override
 			public E tete() {
 				return t;
 				}
 			@Override
 			public Liste<E> reste() {
-				return r;
+				return r1;
 				}
 			
 			@Override
@@ -84,13 +86,10 @@ public interface Liste<E> extends Iterable<E> {
 			
 			@Override
 			public int taille(){
-				Iterator<E> it = this.iterator();
-				int i = 0;
-				while (it.hasNext()){
-					it.next();
-					i+=1;
+				if(this.reste().casVide()){
+					return 1;
 				}
-				return i;
+				return 1+this.reste().taille();
 			}
 		};
 	}
