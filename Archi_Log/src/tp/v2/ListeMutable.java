@@ -23,9 +23,18 @@ public interface ListeMutable<E> extends Liste<E>{
 	 * Services
 	 */
 	default ListeMutable<E> miroir(){
-		// A FAIRE
-		return null;
-		
+		return miroirrec(vide());
+	}
+	
+	default ListeMutable<E> miroirrec(ListeMutable<E> l){
+		if(this.estVide()) {
+			return l ;
+		}
+		else {
+			l.changerReste(l);
+			l.changerTete(this.tete());
+			return this.reste().miroirrec(l);
+		}
 	}
 
 	public static <E> ListeMutable<E> cons(E t, ListeMutable<E> r){
