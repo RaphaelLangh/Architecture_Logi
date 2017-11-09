@@ -1,5 +1,7 @@
 package tp.v2;
 
+import java.util.Iterator;
+
 public interface ListeMutable<E> extends Liste<E>{
 
 	/*
@@ -21,19 +23,41 @@ public interface ListeMutable<E> extends Liste<E>{
 	 * Services
 	 */
 	default ListeMutable<E> miroir(){
-		// TODO
+		// A FAIRE
 		return null;
+		
 	}
 
 	public static <E> ListeMutable<E> cons(E t, ListeMutable<E> r){
+		final ListeMutable<E> r1=r==null ? ListeMutable.vide() : r;
+
 		return new ListeMutable<E>() {
-			// TODO Définir les méthodes utiles.			
+			@Override
+			public ListeMutable<E> reste() {
+				return r1;
+			}
+			@Override
+			public void changerReste(ListeMutable<E> reste) {
+				cons(t,reste);
+			}
+			@Override
+			public void changerTete(E tete) {
+				cons(tete,r1);
+			}
 		};
 	}
 	
 	public static <E> ListeMutable<E> vide() {
 		return new ListeMutable<E>() {
-			// TODO Définir les méthodes utiles.						
+			@Override
+			public void changerReste(ListeMutable<E> reste) {
+				cons(reste.tete(),reste.reste()); //s'il est vide et on change son reste, 
+												  //son nouveau reste devient la liste en entier
+			}
+			@Override
+			public void changerTete(E tete) {
+				cons(tete,vide());
+			}
 		};
 	}
 	
