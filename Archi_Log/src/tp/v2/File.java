@@ -27,14 +27,29 @@ public interface File<E> extends Iterable<E> {
 	File<E> ajout(File<E> secondeFile);
 	
 	default String representation() {
-		// TODO 
-		return "";
+		if(this.estVide()) {
+			return "" ;
+		}
+		else {
+			return this.premier()+", "+this.suivants().representation();
+		}
+		
 	}
 
 	default boolean estEgal(File<E> file){
-		// TODO
-		return true;
+		
+		if(this.estVide()&file.estVide()) {
+			return true ;
+		}
+		else if(this.estVide()|file.estVide()) {
+			return false ;
+		}
+		else {
+			return this.premier().equals(file.premier())&
+					this.suivants().estEgal(file.suivants());
+		}
 	}
+	
 	
 	
 }
