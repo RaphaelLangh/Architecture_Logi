@@ -19,8 +19,7 @@ public interface File<K extends File<K, E>, E> extends Iterable<E>, Mesurable {
 	K ajout(E dernierDansFile); // Ajout en fin
 	K retrait(); // Retrait de premier élément	
 	default K ajoute(K secondFile){
-		//this.
-		return secondFile;
+		throw new UnsupportedOperationException();
 	}
 }
 
