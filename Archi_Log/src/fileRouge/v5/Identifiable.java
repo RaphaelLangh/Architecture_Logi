@@ -1,4 +1,4 @@
-package filRouge.v5;
+package fileRouge.v5;
 
 public interface Identifiable<K> {
 

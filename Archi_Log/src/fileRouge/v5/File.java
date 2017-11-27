@@ -1,4 +1,4 @@
-package v5;
+package fileRouge.v5;
 
 public interface File<K, E> extends Iterable, Mesurable {
 	

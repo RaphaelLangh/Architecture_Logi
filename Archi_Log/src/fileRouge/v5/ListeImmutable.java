@@ -1,4 +1,4 @@
-package filRouge.v5;
+package fileRouge.v5;
 
 public interface ListeImmutable<E> extends 
 	Liste<ListeImmutable<E>, E>, 
